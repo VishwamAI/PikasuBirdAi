@@ -76,6 +76,6 @@ Methodology for Military Application:
 
 5. Continuous Learning: As with the bacterial detection system, a feedback loop will ensure the model continually learns and adapts to new threats and changing conditions.
 
-
+- it is connnection of DeepActions Experimental
 Conclusion:
 In conclusion, while the initial idea is inspired by dogs' ability to detect bacteria and enemies, the applications of the AI system are broad and versatile, ranging from healthcare and food safety to farming and military uses. It holds immense potential to revolutionize various sectors by providing rapid, accurate threat detection and response generation.
