@@ -24,7 +24,7 @@ The potential applications of the AI-enabled bacteria detection and targeting sy
 - **Military**: The system could be adapted for enemy detection in various environments, using data from satellite imagery to ground-level surveillance footage, and triggering appropriate responses based on perceived threat levels.
 
 ## Hardware Considerations
-During Research and development i have researched the concept of the video [Research](./https://www.youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ) hardware machanisams i need research and development
+During Research and development i have researched the concept of the video [Research](./https://youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ&si=lrIwoNWYi6WsV_oP) hardware machanisams i need research and development
 
 ## Future Directions
 Potential future directions include expanding the system's capabilities to detect and respond to other types of pathogens (e.g., viruses and fungi), integrating the AI system with other diagnostic tools and technologies, and exploring AI-assisted drug discovery, particularly in the context of antibiotic resistance.
