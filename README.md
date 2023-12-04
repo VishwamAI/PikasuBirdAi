@@ -34,4 +34,4 @@ For full functionality, Pikasu Bird AI needs to be integrated with specific hard
 Potential future directions include expanding the system's capabilities to detect and respond to other types of pathogens (e.g., viruses and fungi), integrating the AI system with other diagnostic tools and technologies, and exploring AI-assisted drug discovery, particularly in the context of antibiotic resistance.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE.md) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
