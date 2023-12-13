@@ -26,6 +26,13 @@ The potential applications of the AI-enabled bacteria detection and targeting sy
 ## Hardware Considerations
 During Research and development i have researched the concept of the video https://youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ&si=lrIwoNWYi6WsV_oP hardware machanisams i need research and development
 
+## Disign should be like 
+![3rd](https://github.com/Exploit0xfffff/PikasuBirdAi/assets/81065703/33181823-9868-4057-97ec-13857584892a)
+
+![blueprint](https://github.com/Exploit0xfffff/PikasuBirdAi/assets/81065703/2343065c-6449-4f34-99ee-3d238f953fa0)
+
+![project design](https://github.com/Exploit0xfffff/PikasuBirdAi/assets/81065703/3403a75c-0f25-424c-b62b-aafef8ee4ebd)
+
 ## Future Directions
 Potential future directions include expanding the system's capabilities to detect and respond to other types of pathogens (e.g., viruses and fungi), integrating the AI system with other diagnostic tools and technologies, and exploring AI-assisted drug discovery, particularly in the context of antibiotic resistance.
 
