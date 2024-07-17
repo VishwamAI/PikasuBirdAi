@@ -4,6 +4,9 @@ import numpy as np
 import gym
 from gym import spaces
 from transformers import pipeline
+import torch
+from collections import deque
+import random
 
 # Add the project root directory to the Python path
 project_root = os.path.dirname(os.path.abspath(__file__))
@@ -20,6 +23,15 @@ from modules.response_generation import ResponseGenerator
 # Define constants for the environment
 N_ACTIONS = 4  # Example: move left, right, up, down
 HEIGHT, WIDTH, CHANNELS = 84, 84, 3  # Example image dimensions
+
+# Define hyperparameters
+BATCH_SIZE = 32
+REPLAY_BUFFER_SIZE = 10000
+GAMMA = 0.99
+EPSILON_START = 1.0
+EPSILON_END = 0.01
+EPSILON_DECAY = 0.995
+TARGET_UPDATE_FREQUENCY = 100
 
 class BacterialThreatEnv(gym.Env):
     def __init__(self, components):
@@ -54,33 +66,51 @@ class BacterialThreatEnv(gym.Env):
         # Placeholder reward function
         return -threat_level + (10 if response == 'correct_response' else 0)
 
-def q_learning(env, num_episodes, learning_rate, discount_factor, epsilon):
-    q_table = np.zeros([env.observation_space.shape[0], env.action_space.n])
+def dqn_learning(env, num_episodes):
+    input_shape = env.observation_space.shape
+    n_actions = env.action_space.n
+
+    policy_net = ModelTrainer(input_shape, n_actions)
+    target_net = ModelTrainer(input_shape, n_actions)
+    target_net.load_state_dict(policy_net.state_dict())
+
+    replay_buffer = deque(maxlen=REPLAY_BUFFER_SIZE)
+    epsilon = EPSILON_START
 
     for episode in range(num_episodes):
         state = env.reset()
         done = False
+        total_reward = 0
 
         while not done:
-            if np.random.random() < epsilon:
-                action = env.action_space.sample()  # Explore
+            if random.random() < epsilon:
+                action = env.action_space.sample()
             else:
-                action = np.argmax(q_table[state, :])  # Exploit
+                with torch.no_grad():
+                    action = policy_net.predict(state).max(1)[1].item()
 
             next_state, reward, done, _ = env.step(action)
-
-            # Update Q-table
-            q_table[state, action] = q_table[state, action] + learning_rate * (reward + discount_factor * np.max(q_table[next_state, :]) - q_table[state, action])
-
+            replay_buffer.append((state, action, reward, next_state, done))
             state = next_state
+            total_reward += reward
 
-    return q_table
+            if len(replay_buffer) >= BATCH_SIZE:
+                batch = random.sample(replay_buffer, BATCH_SIZE)
+                states, actions, rewards, next_states, dones = zip(*batch)
+                loss = policy_net.update(states, actions, rewards, next_states, dones)
+
+            if episode % TARGET_UPDATE_FREQUENCY == 0:
+                target_net.load_state_dict(policy_net.state_dict())
+
+        epsilon = max(EPSILON_END, epsilon * EPSILON_DECAY)
+        print(f"Episode {episode}, Total Reward: {total_reward}, Epsilon: {epsilon:.2f}")
+
+    return policy_net
 
 def main():
     print("PikasuBirdAi: AI-powered detection and targeting system")
     print("Initializing components...")
 
-    # Initialize components (placeholder implementations)
     components = {
         'data_collector': DataCollector(),
         'image_recognizer': ImageRecognizer(),
@@ -90,21 +120,24 @@ def main():
         'response_generator': ResponseGenerator()
     }
 
-    # Initialize environment
     env = BacterialThreatEnv(components)
 
-    print("Training reinforcement learning agent...")
-    q_table = q_learning(env, num_episodes=1000, learning_rate=0.1, discount_factor=0.99, epsilon=0.1)
+    print("Training DQN agent...")
+    trained_model = dqn_learning(env, num_episodes=1000)
 
     print("System initialized and trained. Ready for threat detection and response.")
 
     # Example of using the trained agent
     state = env.reset()
     done = False
+    total_reward = 0
     while not done:
-        action = np.argmax(q_table[state, :])
+        action = trained_model.predict(state).max(1)[1].item()
         state, reward, done, _ = env.step(action)
+        total_reward += reward
         print(f"Action taken: {action}, Reward: {reward}")
+
+    print(f"Episode finished. Total reward: {total_reward}")
 
 if __name__ == "__main__":
     main()
