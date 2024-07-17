@@ -4,7 +4,8 @@ import numpy as np
 import gym
 from gym import spaces
 from transformers import pipeline
-import torch
+import jax
+import jax.numpy as jnp
 from collections import deque
 import random
 
@@ -15,7 +16,7 @@ sys.path.append(project_root)
 # Import project modules (to be implemented)
 from modules.data_collection import DataCollector
 from modules.image_recognition import ImageRecognizer
-from modules.model_training import ModelTrainer
+from modules.model_training import ModelTrainerWrapper
 from modules.object_detection import ObjectDetector
 from modules.threat_assessment import ThreatAssessor
 from modules.response_generation import ResponseGenerator
@@ -70,9 +71,7 @@ def dqn_learning(env, num_episodes):
     input_shape = env.observation_space.shape
     n_actions = env.action_space.n
 
-    policy_net = ModelTrainer(input_shape, n_actions)
-    target_net = ModelTrainer(input_shape, n_actions)
-    target_net.load_state_dict(policy_net.state_dict())
+    model = ModelTrainerWrapper(input_shape=input_shape, n_actions=n_actions)
 
     replay_buffer = deque(maxlen=REPLAY_BUFFER_SIZE)
     epsilon = EPSILON_START
@@ -83,29 +82,29 @@ def dqn_learning(env, num_episodes):
         total_reward = 0
 
         while not done:
-            if random.random() < epsilon:
-                action = env.action_space.sample()
+            if np.random.random() > epsilon:
+                state = jnp.array(state, dtype=jnp.float32)
+                q_values = model.predict(state)
+                action = int(q_values[0])
             else:
-                with torch.no_grad():
-                    action = policy_net.predict(state).max(1)[1].item()
+                action = env.action_space.sample()
 
             next_state, reward, done, _ = env.step(action)
             replay_buffer.append((state, action, reward, next_state, done))
             state = next_state
             total_reward += reward
 
-            if len(replay_buffer) >= BATCH_SIZE:
+            if len(replay_buffer) > BATCH_SIZE:
                 batch = random.sample(replay_buffer, BATCH_SIZE)
-                states, actions, rewards, next_states, dones = zip(*batch)
-                loss = policy_net.update(states, actions, rewards, next_states, dones)
+                loss = model.update(*zip(*batch))
 
             if episode % TARGET_UPDATE_FREQUENCY == 0:
-                target_net.load_state_dict(policy_net.state_dict())
+                model.update_target()
 
         epsilon = max(EPSILON_END, epsilon * EPSILON_DECAY)
         print(f"Episode {episode}, Total Reward: {total_reward}, Epsilon: {epsilon:.2f}")
 
-    return policy_net
+    return model
 
 def main():
     print("PikasuBirdAi: AI-powered detection and targeting system")
@@ -122,7 +121,7 @@ def main():
     env = BacterialThreatEnv(components)
 
     # Add the model_trainer after creating the environment
-    components['model_trainer'] = ModelTrainer(input_shape=env.observation_space.shape, n_actions=env.action_space.n)
+    components['model_trainer'] = ModelTrainerWrapper(input_shape=env.observation_space.shape, n_actions=env.action_space.n)
 
     print("Training DQN agent...")
     trained_model = dqn_learning(env, num_episodes=1000)
@@ -134,7 +133,9 @@ def main():
     done = False
     total_reward = 0
     while not done:
-        action = trained_model.predict(state).max(1)[1].item()
+        state = jnp.array(state, dtype=jnp.float32)
+        q_values = trained_model.predict(state)
+        action = int(q_values[0].argmax())
         state, reward, done, _ = env.step(action)
         total_reward += reward
         print(f"Action taken: {action}, Reward: {reward}")

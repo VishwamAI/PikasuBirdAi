@@ -2,3 +2,8 @@ transformers==4.42.4
 numpy==1.26.4
 gym==0.26.2
 torch==2.0.1
+jax==0.4.30
+jaxlib==0.4.30
+scipy==1.14.0
+opt-einsum==3.3.0
+ml-dtypes==0.4.0
