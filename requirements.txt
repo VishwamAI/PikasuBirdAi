@@ -11,3 +11,4 @@ ml-dtypes==0.4.0
 opencv-python>=4.1.1
 PyYAML>=5.3.1
 nextgenjax
+tqdm>=4.41.0
