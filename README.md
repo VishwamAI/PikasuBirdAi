@@ -35,6 +35,38 @@ The potential applications of the AI-enabled bacteria detection and targeting sy
 
 ## Hardware Considerations
 During Research and development i have researched the concept of the video https://youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ&si=lrIwoNWYi6WsV_oP hardware machanisams i need research and development
+To enable both remote and mobile operation modes for the robotic bird, we would need to focus on specific components and systems. Here's a list of essential parts needed for these functionalities:
+
+1. Enhanced CPU: The "Embeed CPU" or "Enbived CPU" shown in the image would need to be powerful enough to handle both autonomous and remote-controlled operations.
+
+2. Wireless Communication Module: Not explicitly shown in the image, but crucial for remote operation. This would allow for sending commands and receiving data over long distances.
+
+3. Onboard AI System: For mobile (autonomous) mode, an advanced AI system is necessary. This could be part of the main CPU or a separate dedicated unit.
+
+4. GPS Module: Essential for navigation in both modes. This might be integrated into one of the existing components.
+
+5. Sensors: The various sensors shown ("Sensors Cayed", "Sysnor Mschtion Arihda", etc.) would be crucial for environmental awareness in both modes.
+
+6. Cameras: The "Spernver Camera", "Speakror Camera", and others would provide visual data for navigation and observation.
+
+7. Battery System: A high-capacity, lightweight battery for extended operation in mobile mode.
+
+8. Motor Control Unit: To manage the bird's movements, especially important for precise control in remote mode.
+
+9. Gyroscope and Accelerometer: Likely part of the "Minnature Mechaabe", essential for stability and orientation.
+
+10. Memory Storage: The "Meamorye" component for storing operational data and mission information.
+
+11. Antenna: For long-range communication in remote mode.
+
+12. Fail-safe Systems: To ensure safe operation or return-to-base functionality if communication is lost in remote mode.
+
+13. User Interface: Not shown in the image, but necessary for the remote operator to control the bird and receive data.
+
+14. Obstacle Avoidance System: Utilizing sensors and cameras for safe navigation in mobile mode.
+
+15. Decision-making Algorithms: Software components to enable autonomous decision-making in mobile mode.
+
 
 ## Disign should be like
 ![3rd](https://github.com/Exploit0xfffff/PikasuBirdAi/assets/81065703/33181823-9868-4057-97ec-13857584892a)
