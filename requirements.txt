@@ -1,2 +1,4 @@
 transformers==4.42.4
 numpy==1.26.4
+gym==0.26.2
+torch==2.0.1

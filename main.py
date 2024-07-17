@@ -114,13 +114,15 @@ def main():
     components = {
         'data_collector': DataCollector(),
         'image_recognizer': ImageRecognizer(),
-        'model_trainer': ModelTrainer(),
         'object_detector': ObjectDetector(),
         'threat_assessor': ThreatAssessor(),
         'response_generator': ResponseGenerator()
     }
 
     env = BacterialThreatEnv(components)
+
+    # Add the model_trainer after creating the environment
+    components['model_trainer'] = ModelTrainer(input_shape=env.observation_space.shape, n_actions=env.action_space.n)
 
     print("Training DQN agent...")
     trained_model = dqn_learning(env, num_episodes=1000)
