@@ -1,9 +1,9 @@
 # Test script for verifying YOLOv5 and COCO names integration
 import torch
-from models.yolo import Model
-from utils.datasets import LoadImages
-from utils.general import non_max_suppression, scale_coords
-from utils.plots import plot_one_box
+from yolov5.models.yolo import Model
+from yolov5.utils.datasets import LoadImages
+from yolov5.utils.general import non_max_suppression, scale_coords
+from yolov5.utils.plots import plot_one_box
 import cv2
 
 # Load YOLO model
