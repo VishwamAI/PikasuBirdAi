@@ -143,7 +143,7 @@ class TextDecoder(nn.Module):
         x = self.ln(x)
         return x
 
-class Whisper(nn.Module):
+class WhisperModel(nn.Module):
     def __init__(self, dims: ModelDimensions):
         super().__init__()
         self.dims = dims
