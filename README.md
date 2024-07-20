@@ -34,7 +34,11 @@ The potential applications of the AI-enabled bacteria detection and targeting sy
 - **Military**: The system could be adapted for enemy detection in various environments, using data from satellite imagery to ground-level surveillance footage, and triggering appropriate responses based on perceived threat levels.
 
 ## Hardware Considerations
-During Research and development i have researched the concept of the video https://youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ&si=lrIwoNWYi6WsV_oP hardware machanisams i need research and development
+During Research and development i have researched the concept of the video https://youtube.com/playlist?list=PLlABNT38rkYzYudEM5nUCiE8ONOtuHSYZ&si=lrIwoNWYi6WsV_oP 
+
+https://youtube.com/shorts/X8LglXSG53A?si=sqbthp34CfFnkGQg
+
+hardware machanisams i need research and development
 To enable both remote and mobile operation modes for the robotic bird, we would need to focus on specific components and systems. Here's a list of essential parts needed for these functionalities:
 
 1. Enhanced CPU: The "Embeed CPU" or "Enbived CPU" shown in the image would need to be powerful enough to handle both autonomous and remote-controlled operations.
