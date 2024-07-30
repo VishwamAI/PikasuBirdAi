@@ -1,4 +1,6 @@
 # Pikasu Bird AI
+[![Continuous Integration](https://github.com/VishwamAI/PikasuBirdAi/actions/workflows/ci.yml/badge.svg)](https://github.com/VishwamAI/PikasuBirdAi/actions/workflows/ci.yml)
+
 
 ## Overview
 Pikasu Bird AI is an artificial intelligence (AI) powered detection and targeting system inspired by nature's threat detection mechanisms, particularly dogs' ability to detect and identify enemies. The project's goal is to create a system leveraging AI - specifically transformer-based models like GPT - to scan, recognize, and respond to bacterial threats. It aims to have a broad range of applications in sectors like healthcare, food safety, environmental monitoring, agriculture, and the military.
