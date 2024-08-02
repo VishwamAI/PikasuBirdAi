@@ -38,7 +38,7 @@ class ModelTrainer(NextGenModel):
             x = DenseLayer(features=self.action_size)(x)
         return x
 
-def create_train_state(rng, input_shape, action_size, learning_rate=0.0005):
+def create_train_state(rng, input_shape, action_size, learning_rate=0.001):
     def forward_fn(x):
         model = ModelTrainer(num_layers=3, hidden_size=64, num_heads=4, dropout_rate=0.1)
         model.set_action_size(action_size)
@@ -46,7 +46,15 @@ def create_train_state(rng, input_shape, action_size, learning_rate=0.0005):
 
     transformed_forward = hk.transform(forward_fn)
     params = transformed_forward.init(rng, jnp.ones(input_shape))
-    tx = adam(learning_rate)
+
+    # Use Adam optimizer with learning rate schedule
+    schedule_fn = optax.exponential_decay(init_value=learning_rate, transition_steps=1000, decay_rate=0.9)
+    tx = optax.chain(
+        optax.clip_by_global_norm(1.0),  # Gradient clipping
+        optax.scale_by_adam(),
+        optax.scale_by_schedule(schedule_fn)
+    )
+
     return train_state.TrainState.create(apply_fn=transformed_forward.apply, params=params, tx=tx)
 
 class ModelTrainerWrapper:
@@ -58,6 +66,9 @@ class ModelTrainerWrapper:
         self.target_params = self.state.params
         self.forward = hk.transform(lambda x: ModelTrainer(num_layers=3, hidden_size=64, num_heads=4, dropout_rate=0.1)(x))
         self.population = self._initialize_population()
+        self.best_loss = float('inf')
+        self.patience = 10
+        self.patience_counter = 0
 
     def _initialize_population(self):
         return [self._mutate_params(self.state.params) for _ in range(pop_size)]
@@ -128,7 +139,20 @@ class ModelTrainerWrapper:
         self.population = new_population
         self.state = train_state.TrainState.create(apply_fn=self.state.apply_fn, params=self.population[0], tx=self.state.tx)
 
-        return min(losses)
+        min_loss = min(losses)
+
+        # Early stopping
+        if min_loss < self.best_loss:
+            self.best_loss = min_loss
+            self.patience_counter = 0
+        else:
+            self.patience_counter += 1
+
+        if self.patience_counter >= self.patience:
+            print("Early stopping triggered")
+            return None
+
+        return min_loss
 
     def _tournament_selection(self, population, fitnesses):
         tournament_size = random.randint(tournament_size_min, tournament_size_max)
@@ -137,3 +161,8 @@ class ModelTrainerWrapper:
 
     def update_target(self):
         self.target_params = self.state.params
+
+    def compress_model(self):
+        # Implement model compression techniques here
+        # For example, pruning, quantization, or knowledge distillation
+        pass
