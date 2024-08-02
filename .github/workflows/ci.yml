@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - website
+      - feature/website-software-hardware-integration
   pull_request:
     branches:
       - main
       - website
+      - feature/website-software-hardware-integration
 
 jobs:
   build:
