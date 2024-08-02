@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PikasuBirdAi Project Documentation</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>PikasuBirdAi Project</h1>
+        <nav>
+            <ul>
+                <li><a href="#hardware-requirements">Hardware Requirements</a></li>
+                <li><a href="#technical-specifications">Technical Specifications</a></li>
+                <li><a href="#integration-plans">Integration Plans</a></li>
+                <li><a href="#future-considerations">Future Considerations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hardware-requirements">
+            <h2>Hardware Requirements</h2>
+            <p>The PikasuBirdAi project requires specialized hardware components to ensure optimal performance in bird detection, identification, and analysis. The following key hardware components are essential:</p>
+            <h3>1. High-Performance Server Processing</h3>
+            <ul>
+                <li><strong>Nvidia A100 Tensor Core GPU:</strong> Recommended for state-of-the-art AI and HPC workloads, ideal for server-based processing of complex bird detection algorithms.</li>
+                <li><strong>AMD Instinct MI250X:</strong> Suitable for high-performance AI and scientific computing, perfect for training and running sophisticated bird analysis models.</li>
+            </ul>
+            <h3>2. On-Device Processing</h3>
+            <ul>
+                <li><strong>Apple Neural Engine (in A16 Bionic):</strong> Ideal for iOS-based mobile applications for field bird identification.</li>
+                <li><strong>Qualcomm Snapdragon 8 Gen 2 AI Engine:</strong> Recommended for Android-based mobile applications and field-deployable units.</li>
+            </ul>
+            <h3>3. Cloud-Based Processing</h3>
+            <ul>
+                <li><strong>AWS Trainium:</strong> Excellent for scalable processing of large datasets and complex model training in cloud environments.</li>
+            </ul>
+            <h3>4. Balanced Performance and Efficiency</h3>
+            <ul>
+                <li><strong>Intel Habana Gaudi2:</strong> Suitable for efficient training and deployment of bird detection models, offering a balance between performance and power efficiency.</li>
+            </ul>
+            <p>These hardware components are crucial for handling complex computations, reducing latency, and improving overall system performance in real-time bird monitoring and identification tasks.</p>
+        </section>
+
+        <section id="technical-specifications">
+            <h2>Technical Specifications</h2>
+            <p>The following are detailed technical specifications of the key hardware components used in the PikasuBirdAi project:</p>
+
+            <h3>1. Nvidia A100 Tensor Core GPU</h3>
+            <ul>
+                <li>Architecture: NVIDIA Ampere</li>
+                <li>CUDA Cores: 6912</li>
+                <li>Tensor Cores: 432 (3rd generation)</li>
+                <li>Memory: 40GB or 80GB HBM2e</li>
+                <li>Memory Bandwidth: Up to 2,039 GB/s</li>
+                <li>FP32 Performance: 19.5 TFLOPS</li>
+                <li>Tensor Float 32 (TF32) Performance: 156 TFLOPS</li>
+                <li>Power Consumption: 400W (SXM4)</li>
+            </ul>
+
+            <h3>2. AMD Instinct MI250X</h3>
+            <ul>
+                <li>Architecture: CDNA 2</li>
+                <li>Stream Processors: 14,080</li>
+                <li>Memory: 128GB HBM2e</li>
+                <li>Memory Bandwidth: 3.2 TB/s</li>
+                <li>FP32 Performance: 47.9 TFLOPS</li>
+                <li>FP16 Performance: 383 TFLOPS</li>
+                <li>Power Consumption: 560W</li>
+            </ul>
+
+            <h3>3. Apple Neural Engine (A16 Bionic)</h3>
+            <ul>
+                <li>Architecture: 16-core design</li>
+                <li>Performance: Up to 17 trillion operations per second</li>
+                <li>Process Node: 4nm</li>
+                <li>CPU: 6-core (2 performance + 4 efficiency)</li>
+                <li>GPU: 5-core</li>
+                <li>Memory: Integrated with system memory (varies by device)</li>
+            </ul>
+
+            <h3>4. Qualcomm Snapdragon 8 Gen 2</h3>
+            <ul>
+                <li>CPU: Octa-core Kryo (1x3.2 GHz Cortex-X3 + 2x2.8 GHz Cortex-A715 + 2x2.8 GHz Cortex-A710 + 3x2.0 GHz Cortex-A510)</li>
+                <li>GPU: Adreno 740</li>
+                <li>AI Engine: 4.35x AI performance improvement over previous gen</li>
+                <li>Process Node: 4nm</li>
+                <li>Memory: Support for LPDDR5X RAM</li>
+            </ul>
+
+            <h3>5. AWS Trainium</h3>
+            <ul>
+                <li>Performance: Up to 40% better price-performance vs GPU-based EC2 instances</li>
+                <li>Optimized for: PyTorch and TensorFlow</li>
+                <li>Integration: Seamless with AWS AI services</li>
+                <li>Scalability: Designed for large-scale distributed training</li>
+            </ul>
+
+            <h3>6. Intel Habana Gaudi2</h3>
+            <ul>
+                <li>Process Node: 7nm</li>
+                <li>Memory: 96GB HBM2e</li>
+                <li>Connectivity: 24x 100GbE RoCE v2 ports</li>
+                <li>AI Performance: Up to 5.6x faster than 1st gen Gaudi</li>
+                <li>Power Efficiency: Improved performance per watt compared to GPUs</li>
+            </ul>
+        </section>
+
+        <section id="integration-plans">
+            <h2>Integration Plans</h2>
+            <p>Overview of how different hardware components will be integrated into the PikasuBirdAi system.</p>
+            <!-- Add more detailed content here -->
+        </section>
+
+        <section id="future-considerations">
+            <h2>Future Considerations</h2>
+            <p>Discussion on future hardware upgrades, scalability, and energy efficiency improvements.</p>
+            <!-- Add more detailed content here -->
+        </section>
+
+        <section id="flying-mechanism">
+            <h2>Flying Mechanism</h2>
+            <p>The PikasuBirdAi project employs advanced flying mechanisms to achieve bird-like flight:</p>
+            <ul>
+                <li><strong>Cycloidal Drives:</strong> Used for wing actuation, providing compact and precise control over wing movements.</li>
+                <li><strong>Heat-Resistant Materials:</strong> Crucial for withstanding operational stresses and heat generated during flight.</li>
+                <li><strong>Wing Design:</strong> Focuses on rigidity to prevent excessive floppiness during flapping motion, ensuring efficient flight dynamics.</li>
+            </ul>
+            <!-- Add diagrams or images of the flying mechanism here -->
+        </section>
+
+        <section id="internal-memory">
+            <h2>Internal Memory</h2>
+            <p>The internal memory system is vital for the PikasuBirdAi's flight control and navigation:</p>
+            <ul>
+                <li><strong>Role in Flight Control:</strong> Enables real-time processing of sensor data and execution of flight algorithms.</li>
+                <li><strong>Navigation Support:</strong> Stores and processes map data and flight paths for autonomous navigation.</li>
+                <li><strong>Specifications:</strong> Utilizes high-speed, low-latency memory systems optimized for rapid data access and processing.</li>
+            </ul>
+            <!-- Add visual representation of the memory system architecture here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 PikasuBirdAi Project. All rights reserved.</p>
+        <p>Contact: <a href="mailto:info@pikasubirdai.com">info@pikasubirdai.com</a></p>
+    </footer>
+</body>
+</html>

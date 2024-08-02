@@ -1,0 +1,143 @@
+/* Global Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    color: #24292e;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f8fa;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+}
+
+/* Header Styles */
+header {
+    background-color: #ffffff;
+    color: #24292e;
+    padding: 20px 0;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+nav {
+    background-color: #f6f8fa;
+    padding: 20px;
+    width: 250px;
+    height: calc(100vh - 60px);
+    position: fixed;
+    overflow-y: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin-bottom: 10px;
+}
+
+nav ul li a {
+    color: #0366d6;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    padding: 5px 0;
+}
+
+nav ul li a:hover {
+    color: #0246a2;
+}
+
+/* Main Content Styles */
+main {
+    flex-grow: 1;
+    padding: 40px;
+    margin-left: 250px;
+    background-color: #ffffff;
+    min-height: calc(100vh - 60px);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #24292e;
+    border-bottom: 1px solid #e1e4e8;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+h3 {
+    color: #24292e;
+    font-weight: 600;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #ffffff;
+    color: #586069;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #e1e4e8;
+}
+
+footer a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        height: auto;
+        position: static;
+        padding: 10px;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 1.5em;
+    }
+}
+
+/* Accessibility */
+a:focus, button:focus {
+    outline: 2px solid #0366d6;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
