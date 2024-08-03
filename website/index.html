@@ -13,6 +13,7 @@
             <ul>
                 <li><a href="#hardware-requirements">Hardware Requirements</a></li>
                 <li><a href="#technical-specifications">Technical Specifications</a></li>
+                <li><a href="#software-architecture">Software Architecture</a></li>
                 <li><a href="#integration-plans">Integration Plans</a></li>
                 <li><a href="#future-considerations">Future Considerations</a></li>
             </ul>
@@ -140,6 +141,46 @@
                 <li><strong>Specifications:</strong> Utilizes high-speed, low-latency memory systems optimized for rapid data access and processing.</li>
             </ul>
             <!-- Add visual representation of the memory system architecture here -->
+        </section>
+
+        <section id="software-architecture">
+            <h2>Software Architecture</h2>
+            <p>The PikasuBirdAi project utilizes a sophisticated software architecture to enable advanced bird detection, identification, and analysis capabilities:</p>
+            <h3>1. Open-Source GPT Models</h3>
+            <p>We integrate open-source GPT models to enhance our AI capabilities:</p>
+            <pre><code>
+import os
+from routellm.controller import Controller
+
+os.environ["OPENAI_API_KEY"] = "sk-XXXXXX"
+os.environ["ANYSCALE_API_KEY"] = "esecret_XXXXXX"
+
+client = Controller(
+  routers=["mf"],
+  strong_model="gpt-4-1106-preview",
+  weak_model="anyscale/mistralai/Mixtral-8x7B-Instruct-v0.1",
+)
+            </code></pre>
+            <p>These models contribute to various functionalities, including:</p>
+            <ul>
+                <li>Real-time bird species identification</li>
+                <li>Behavior analysis and prediction</li>
+                <li>Natural language processing for user queries</li>
+            </ul>
+
+            <h3>2. RouteLLM Integration</h3>
+            <p>RouteLLM enhances our system's ability to efficiently route queries to the most appropriate AI model, optimizing performance and resource utilization.</p>
+
+            <h3>3. Ollama Integration</h3>
+            <p>Ollama provides lightweight, customizable language models that we use for specific tasks such as quick bird feature extraction and preliminary classification.</p>
+
+            <h3>4. Custom AI Algorithms</h3>
+            <p>We've developed proprietary algorithms for:</p>
+            <ul>
+                <li>Flight pattern analysis</li>
+                <li>Environmental adaptation modeling</li>
+                <li>Migratory behavior prediction</li>
+            </ul>
         </section>
     </main>
 
