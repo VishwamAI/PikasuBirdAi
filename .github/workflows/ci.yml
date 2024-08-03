@@ -28,7 +28,7 @@ jobs:
     - name: Run tests
       run: |
         python -m unittest discover -s tests
-    
+
   deploy-website:
     needs: build
     if: github.ref == 'refs/heads/website' && github.event_name == 'push'
