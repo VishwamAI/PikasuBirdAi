@@ -1,7 +1,7 @@
 transformers==4.38.0
 numpy>=1.23.0
 gym==0.26.2
-torch==2.0.1
+torch==2.2.0
 torchvision==0.15.2
 jax==0.4.13
 jaxlib==0.4.13
