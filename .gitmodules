@@ -1,0 +1,6 @@
+[submodule "transformers"]
+	path = transformers
+	url = https://github.com/huggingface/transformers.git
+[submodule "yolov5"]
+	path = yolov5
+	url = https://github.com/ultralytics/yolov5.git
